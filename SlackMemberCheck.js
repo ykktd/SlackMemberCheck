@@ -55,8 +55,8 @@ function checkSlackMembership() {
       var row = values[i];
       var currentStatus = row[0];
 
-      // 既にチェック状態が入っている行は、手動更新を尊重してそのまま保持する。
-      if (toSafeString_(currentStatus).trim() !== "") {
+      // 既にTRUEの行は確定済みとして保持する。FALSE/空欄は毎回再判定する。
+      if (currentStatus === true) {
         outputStatuses.push([currentStatus]);
         continue;
       }
